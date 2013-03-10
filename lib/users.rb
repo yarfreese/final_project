@@ -1,9 +1,9 @@
 class Users
 
-  FILENAME="data/sample.txt"
+#  FILENAME="data/sample.txt"
 
   def initialize 
-    lines = File.open(FILENAME, 'r').readlines
+    lines = File.open(UFILE, 'r').readlines
     @entries = lines[0..-1]
     @usrs = @entries.collect do |line|
       entry_to_hash line
@@ -20,7 +20,7 @@ class Users
   end
 
   def add l_name, f_name
-    f = File.open(FILENAME, "a")
+    f = File.open(UFILE, "a")
     @usrs.collect do |line|
       if (l_name == line[:last_name]) && (f_name == line[:first_name])
         puts "User already exists, not added"
@@ -34,7 +34,7 @@ class Users
   end
 
   def del l_name, f_name 
-    f = File.open(FILENAME, "w")
+    f = File.open(UFILE, "w")
     @usrs.collect do |line|
       if (l_name == line[:last_name]) && (f_name == line[:first_name])
         loop
@@ -116,7 +116,7 @@ class Users
   end
  
   def save 
-    f = File.open(FILENAME, "w")
+    f = File.open(UFILE, "w")
     @usrs.collect do |line|
       f.puts "#{line[:last_name]}|#{line[:first_name]}|#{line[:admin]}|#{line[:id]}"
     end

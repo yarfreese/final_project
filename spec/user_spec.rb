@@ -5,6 +5,8 @@ require 'users.rb'
 
 MAX_ID = 267  # Highest user id in sample file is 267
 
+UFILE="data/sample.txt"
+
 describe Users do
 
   subject { Users.new }

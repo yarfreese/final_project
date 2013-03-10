@@ -2,14 +2,9 @@
 
 require "../lib/requests.rb"
 
-FILE = "../data/sample_requests.copy.for.test.txt"
-
-#if !Dir.exists(../data)
-   ### need stuff here
-#end
-#if !File.exists(FILE)
-   ### need stuff here
-#end
+MFILE = "../data/machines.txt"
+RFILE = "../data/requests.txt"
+UFILE = "../data/users.txt"
 
 puts " Options "
 puts "   a - add request"
