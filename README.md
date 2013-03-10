@@ -27,18 +27,11 @@ Features
 * maintains list of reservations
 
 Problems
+* must be in bin folder to execute
 * no web interface
 * does not currently support email
 * uses txt files not a database -- for small labs only
 * uses "|" delimited text files and does not check for "|" in input
-
-## Contributing
-
-1. Fork it
-1. Create your feature branch (`git checkout -b my-new-feature`)
-1. Commit your changes (`git commit -am 'Added some feature'`)
-1. Push to the branch (`git push origin my-new-feature`)
-1. Create new Pull Request
 
 ## LICENSE
 
