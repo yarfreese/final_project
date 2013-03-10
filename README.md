@@ -22,13 +22,12 @@ Features
 * maintains list of users
   * add
   * delete
-  * update last name
 * maintains list of machines
 * maintains list of reservations
 
 Problems
 * must be in bin folder to execute
-* no web interface
+* not all user interfaces complete
 * does not currently support email
 * uses txt files not a database -- for small labs only
 * uses "|" delimited text files and does not check for "|" in input
