@@ -1,10 +1,12 @@
+require 'date'
+
 class Machines
 
   puts "In Machines"
 
   def initialize
-    puts  "in initialize"
-    puts "#{MFILE}"
+    #puts  "in initialize"
+    #puts "#{MFILE}"
     lines = File.open(MFILE, 'r').readlines
     @entries = lines[0..-1]
     @machines = @entries.collect do |line|
@@ -27,7 +29,6 @@ class Machines
   end
 
   def add id
-    puts 'in add'
     f = File.open(MFILE, "a")
     @machines.collect do |line|
       if (id == line[:mach_id]) 
@@ -55,15 +56,32 @@ class Machines
   end 
 
   def find_free date, days
+    desired_range = Date.strptime(date, '%m-%d-%Y')..(Date.strptime(date, '%m-%d-%Y') + days.to_i)
+    # puts "desired_range: #{desired_range}"
     free_machines = Array.new
-    reqs = Requests.new
-    puts reqs
     @machines.collect do |line|
-      puts line
+      # puts line
       if line[:req_id].nil? 
         free_machines.push line[:mach_id]  
       else
-      ### dates need work ###
+        avail = true
+        r = line[:req_id].split(", ")
+        # puts "r: #{r}"
+        # account for multiple requests being fulfilled by a given machine
+        r.collect do |rq|
+          # puts "rq: #{rq}"
+          rq_range = Requests.new.req_date_range rq
+          # puts "rq_range: #{rq_range}"
+          rq_range.map do |date| 
+            if desired_range === date
+              avail = false 
+            end
+          end
+          # puts "avail: #{avail}"
+        end
+        if avail == true
+          free_machines.push line[:mach_id]  
+        end
       end
     end
     free_machines

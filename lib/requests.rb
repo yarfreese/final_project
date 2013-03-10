@@ -1,10 +1,10 @@
-class Requests
+class Requests < Array
 
   puts "In Requests"
 
   def initialize
-    puts "in initialize"
-    puts "filename:  #{RFILE}"
+    # puts "in initialize"
+    # puts "filename:  #{RFILE}"
     lines = File.open(RFILE, 'r').readlines
     @entries = lines[0..-1]
     @requests = @entries.collect do |line|
@@ -64,6 +64,22 @@ class Requests
       #  puts "  comments:  #{line[:comments]}"
       #end
     end 
+    count
+  end
+
+  def get_all
+    @requests
+  end
+
+  def get r
+    @requests.find { |q| q[:req_id] == r } 
+  end
+
+  def req_date_range r
+     item = get(r)
+     days = item[:days_reqd].to_i
+     start = Date.strptime(item[:date_reqd], '%m-%d-%Y')
+     range = start..(start+days)
   end
 
 end

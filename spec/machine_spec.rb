@@ -5,6 +5,7 @@ require 'users.rb'
 
 MFILE = 'data/sample_machines.txt'
 MFILE_COPY = 'data/sample_machines.copy.for.test.txt'
+RFILE = 'data/sample_requests.txt'
 
 File.open(MFILE, "w") do |line|
   line.puts("q123456|23")
