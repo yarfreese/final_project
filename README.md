@@ -2,20 +2,6 @@
 
 Gem written as a class assignment.  Maintains a list of users, machines, and reservation requests.
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'tsolak_test_gem'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tsolak_test_gem
-
 ## Features/Problems
 
 Features
@@ -24,6 +10,7 @@ Features
   * delete
 * maintains list of machines
 * maintains list of reservations
+* displays a list of machines available for a given request
 
 Problems
 * must be in bin folder to execute
