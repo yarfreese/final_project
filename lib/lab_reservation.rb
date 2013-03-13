@@ -3,6 +3,9 @@ $LOAD_PATH.unshift File.expand_path("../lab_reservation", __FILE__)
 
 require 'version'
 require 'yaml'
+require 'users'
+require 'requests'
+require 'machines'
 
 module LabReservation
 

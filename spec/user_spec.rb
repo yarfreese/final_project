@@ -1,7 +1,7 @@
 require 'rspec'
-require 'machines.rb'
-require 'requests.rb'
-require 'users.rb'
+require 'machines'
+require 'requests'
+require 'users'
 
 MAX_ID = 267  # Highest user id in sample file is 267
 

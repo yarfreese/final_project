@@ -1,0 +1,5 @@
+SAMPLE|SAMPLE|false|0
+Solak|Theresa|true|1
+Jones|Bob|false|267
+Smith|Jean|false|4
+Doe|John|false|3

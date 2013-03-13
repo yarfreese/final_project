@@ -1,3 +1,6 @@
+#$LOAD_PATH.unshift File.dirname(__FILE__)
+#$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+
 class Users
 
 #  FILENAME="data/sample.txt"

@@ -1,43 +1,59 @@
 #!/usr/bin/env ruby
+  
+#$LOAD_PATH.unshift File.dirname(__FILE__)
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
-require "../lib/requests.rb"
-
+require_relative '../lib/lab_reservation'  
+require_relative '../lib/lab_reservation/version'
+require_relative '../lib/machines'
+require_relative '../lib/requests'
+require_relative '../lib/users'
+require 'date'
+ 
 MFILE = "../data/machines.txt"
 RFILE = "../data/requests.txt"
 UFILE = "../data/users.txt"
 
-puts " Options "
-puts "   a - add request"
-puts "   s - show existing requests"
-puts "   q - quit"
-opt = gets.chomp
-
-while opt != "q" do
-
-    case 
-    when opt == "a"
-      puts " date required (mm-dd-yyyy)?"
-      req_date = gets.chomp
-      puts " number of days needed?"
-      num_days = gets.chomp
-      puts " number of machines needed?"
-      num_mach = gets.chomp
-      puts " image (XP|Win7|Win8)?"
-      img = gets.chomp
-      puts " comments (optional)?"
-      comment = gets.chomp
-      Requests.new.add('1', req_date, num_days, num_mach, img, comment) 
-    when opt == "s"
-      Requests.new.show
-    else
-      puts "Invalid Option, please try again"
-    end
-
-    puts " Options"
-    puts "   a - add request"
-    puts "   s - show existing requests"
-    puts "   u - update request"
-    puts "   q - quit"
-    opt = gets.chomp
-
-end
+  puts " Request Options "
+  puts "   a - add request"
+  puts "   s - show existing requests"
+  puts "   q - quit Request Options (return to main menu)"
+  opt = gets.chomp
+  
+  while opt != "q" do
+  
+      case 
+      when opt == "a"
+        puts " date required (mm-dd-yyyy)?"
+        req_date = gets.chomp
+        puts " number of days needed?"
+        num_days = gets.chomp
+        puts " number of machines needed?"
+        num_mach = gets.chomp
+        puts " image (XP|Win7|Win8)?"
+        img = gets.chomp
+        puts " comments (optional)?"
+        comment = gets.chomp
+        Requests.new.add('1', req_date, num_days, num_mach, img, comment) 
+      when opt == "f"
+        puts " request id?"
+        req_id = gets.chomp
+        req = Requests.new.get req_id
+        req_date =  Date.strptime(req[:date_reqd], '%m-%d-%Y')
+        puts "date required: #{req_date}"
+        puts "days required: #{req[:days_reqd]}"
+        puts Machines.new.find_free(req[:date_reqd], req[:days_reqd].to_i)
+      when opt == "s"
+        Requests.new.show
+      else
+        puts "Invalid Option, please try again"
+      end
+  
+      puts " Request Options"
+      puts "   a - add request"
+      puts "   s - show existing requests"
+      puts "   f - find available machine for request"
+      puts "   q - quit Request Options (return to main menu)"
+      opt = gets.chomp
+  
+  end

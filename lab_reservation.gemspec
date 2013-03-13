@@ -7,7 +7,7 @@ require 'lab_reservation'
 Gem::Specification.new do |s|
   s.name        = 'tsolak_lab_reservation'
   s.version     = LabReservation::VERSION
-  s.date        = '2013-03-09'
+  s.date        = '2013-03-11'
   s.summary     = "Reserve a Lab Machine"
   s.description = "A gem to reserve one or more lab machines for one or more days"
   s.authors     = ["Theresa Solak"]

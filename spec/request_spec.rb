@@ -1,7 +1,7 @@
 require 'rspec'
-require 'machines.rb'
-require 'requests.rb'
-require 'users.rb'
+require 'machines'
+require 'requests'
+require 'users'
 
 RFILE = 'data/sample_requests.txt'
 RFILE_COPY = 'data/sample_requests.copy.for.test.txt'

@@ -1,4 +1,9 @@
+#$LOAD_PATH.unshift File.dirname(__FILE__)
+#$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+
 require 'date'
+require 'requests'
+require 'users'
 
 class Machines
 
@@ -86,5 +91,28 @@ class Machines
     end
     free_machines
   end
-       
+ 
+  def add_req machine_name, request_id
+    f = File.open(MFILE, "w")
+    @machines.collect do |line|
+      if line[:mach_id] != machine_name
+        f.puts "#{line[:mach_id]}|#{line[:req_id]}"
+      else
+        # update the request id field
+        if line[:req_id] == nil
+          new_r_id = request_id 
+        else
+          new_r_id = "#{line[:req_id]}, #{request_id}"
+        end
+        f.puts "#{line[:mach_id]}|#{new_r_id}"
+      end
+    end
+    f.close
+    Machines.new.get machine_name
+  end
+  
+  def get m
+    @machines.find { |i| i[:mach_id] == m }
+  end
+      
 end
