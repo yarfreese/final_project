@@ -9,10 +9,8 @@ require_relative '../lib/machines'
 require_relative '../lib/requests'
 require_relative '../lib/users'
 require 'date'
- 
-MFILE = "../data/machines.txt"
-RFILE = "../data/requests.txt"
-UFILE = "../data/users.txt"
+
+LabReservation::sample_files
 
   puts " Request Options "
   puts "   a - add request"
