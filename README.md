@@ -13,7 +13,6 @@ Features
 * displays a list of machines available for a given request
 
 Problems
-* must be in bin folder to execute
 * not all user interfaces complete
 * does not currently support email
 * uses txt files not a database -- for small labs only
